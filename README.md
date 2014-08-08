@@ -11,6 +11,19 @@ Ore Spawning is based on Galacticraft algorithm
     [OverworldGenerator.java](https://github.com/micdoodle8/Galacticraft/blob/master/src/main/java/micdoodle8/mods/galacticraft/core/world/gen/OverworldGenerator.java)
 
 
+
+Install
+=======
+
+You don't need to install it. You can either copy the repository to your computer
+
+    git clone --recursive https://github.com/EoD/MinecraftPyOreGen
+
+Or you can just download the code
+
+    https://github.com/EoD/MinecraftPyOreGen/archive/master.zip
+
+
 Usage
 =====
 
