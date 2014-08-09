@@ -21,7 +21,7 @@ except ImportError:
 
 
 oreBlock = 804
-# metadata = ???
+oreData = 7         #Metadata
 amountPerChunk = 18
 minGenerateLevel = 0
 maxGenerateLevel = 45
@@ -97,10 +97,12 @@ def modifyWorld(world):
             continue
         # if chunk already contains wanted Block, skip chunk
         elif oreBlock in chunk.Blocks:
-            #log.info("Found Aluminum in (%d, %d)" % (x, z))
-            continue
+            oreBlocksMask = (chunk.Blocks == oreBlock)
+            if oreData in chunk.Data[oreBlocksMask]:
+                log.info("Found Aluminum in (%d, %d)" % (x, z))
+                continue
         # if chunk has no stone blocks, skip chunk
-        elif not stoneBlock in chunk.Blocks:
+        if not stoneBlock in chunk.Blocks:
             log.info("No Stone found in (%d, %d)" % (x, z))
             continue
         else:
@@ -181,6 +183,7 @@ def generateOre(chunk, random, coord_x, coord_y, coord_z):
                             if (var39 * var39 + var42 * var42 + var45 * var45 < 1.0 and block == stoneBlock):
                                 # We lack metadata info here!
                                 chunk.Blocks[var38, var44, var41] = oreBlock
+                                chunk.Data[var38, var44, var41] = oreData
                                 oreGenerated = True
     return oreGenerated
 
