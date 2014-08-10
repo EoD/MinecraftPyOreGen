@@ -61,9 +61,6 @@ def main():
         duration, chunks_per_sec))
 
 
-    log.info("Re-generating dirty lights.")
-    world.generateLights()
-
     # Save the level.dat and any chunks that have been marked for
     # writing to disk. This also compresses any chunks marked for
     # recompression.
@@ -125,7 +122,7 @@ def modifyChunk(chunk):
             chunkModified = True
 
     if chunkModified:
-        chunk.chunkChanged()
+        chunk.chunkChanged(calcLighting=False)
         return True
     else:
         return False
